@@ -2,7 +2,6 @@ package edu.udea.sigiga.controller;
 
 import edu.udea.sigiga.exception.ModelNotFoundException;
 import edu.udea.sigiga.model.Employee;
-import edu.udea.sigiga.model.Enterprise;
 import edu.udea.sigiga.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

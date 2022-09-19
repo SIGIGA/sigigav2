@@ -1,6 +1,5 @@
 package edu.udea.sigiga.service;
 
-import edu.udea.sigiga.model.Employee;
 import edu.udea.sigiga.model.Profile;
 import edu.udea.sigiga.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
