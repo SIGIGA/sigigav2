@@ -24,11 +24,11 @@ public class EnterpriseController {
         return enterprise;
     }
 
-    @GetMapping(value = "enterprises")
+   /* @GetMapping("/enterprises")
     public List<Enterprise> findAllEnterprises(){
         return enterpriseService.findAllEnterprises();
     }
-
+*/
     @PutMapping(value = "enterprises")
     public  Enterprise updateEnterprise(@RequestBody Enterprise enterprise){
         return enterpriseService.updateEnterprise(enterprise);
