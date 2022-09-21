@@ -11,16 +11,15 @@
 </head>
 <body>
 <main>
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 py-4 my-4 text-center">
         <div>
-            <img class="d-block mx-auto mb-4" src="/img/coche.png" alt="" width="72" height="57">
-            <h2 class="display-3 fw-bold">SIGIGA</h2>
-            <h5 class="display-5 fw-bold">Gestionando empresas</h5>
-            <a href="/enterprises/new" class="btn btn-secondary">Nueva Empresa</a>
+            <img class="d-block mx-auto mb-4" src="/img/enterprise.png" alt="" width="72" height="57">
+            <h3 class="display-4 fw-bold">SIGIGA</h3>
+            <h5 class="display-7 fw-bold">Gestionando empresas</h5>
+            <a href="/enterprises/new" class="btn btn-secondary px-4 my-4">Nueva Empresa</a>
         </div>
         <div class="d-flex gap-4 justify-content-center">
             <div th:each="enterprise : ${enterprises}" class="card" style="width: 18rem;">
-                <img src="/img/updated.png" class="card-img-top" alt="" width="10" height="10">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${enterprise.name}"></h5>
                     <p class="card-text" th:text="'Document: ' + ${enterprise.document}"></p>

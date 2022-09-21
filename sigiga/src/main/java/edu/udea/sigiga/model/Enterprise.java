@@ -1,19 +1,11 @@
 package edu.udea.sigiga.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "enterprise")
 public class Enterprise {
@@ -47,4 +39,90 @@ public class Enterprise {
     @Column(name = "update_at")
     private Date updateAt;
 
+    //Constructores
+    public Enterprise() {
+    }
+
+    public Enterprise(String name, String document, String phone,
+                      String address, Date createAt, Date updateAt) {
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.address = address;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+
+    //Sets And Gets
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
 }

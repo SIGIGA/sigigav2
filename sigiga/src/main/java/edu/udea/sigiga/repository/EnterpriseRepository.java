@@ -1,7 +1,9 @@
 package edu.udea.sigiga.repository;
 
 import edu.udea.sigiga.model.Enterprise;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EnterpriseRepository extends CrudRepository<Enterprise, Long> {
+@Repository
+public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 }

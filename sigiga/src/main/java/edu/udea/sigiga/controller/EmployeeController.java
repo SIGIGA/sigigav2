@@ -23,10 +23,11 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
         return employee;
     }
-    @GetMapping(value = "users")
+
+    /*@GetMapping(value = "users")
     public List<Employee> findAllEmployees(){
         return employeeService.findAllEmployees();
-    }
+    }*/
 
     @PutMapping(value = "users")
     public  Employee updateEmployee(@RequestBody Employee employee){

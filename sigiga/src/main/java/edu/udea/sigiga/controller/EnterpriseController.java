@@ -3,25 +3,34 @@ package edu.udea.sigiga.controller;
 import edu.udea.sigiga.exception.ModelNotFoundException;
 import edu.udea.sigiga.model.Enterprise;
 import edu.udea.sigiga.service.EnterpriseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.Id;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
 public class EnterpriseController {
 
-    @Autowired
-    private EnterpriseService enterpriseService;
+    //Atributos
+    EnterpriseService enterpriseService;
 
-    @PostMapping(value = "enterprises")
-    public Enterprise saveEnterprise(@RequestBody Enterprise enterprise){
-        enterpriseService.saveEnterprise(enterprise);
-        return enterprise;
+    //Constructor
+    public EnterpriseController(EnterpriseService enterpriseService) {
+        this.enterpriseService = enterpriseService;
+    }
+
+    //Request tipo POST
+    @PostMapping("/enterprises")
+    public RedirectView saveEnterprise(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD")
+                                           Enterprise enterprise, Model model){
+        model.addAttribute(enterprise);
+        this.enterpriseService.saveEnterprise(enterprise);
+        return new RedirectView("/enterprises");
     }
 
    /* @GetMapping("/enterprises")

@@ -13,6 +13,7 @@ public class FrontController {
 
     EnterpriseService enterpriseService;
 
+    //Constructores
     public FrontController(EnterpriseService enterpriseService){
         this.enterpriseService = enterpriseService;
     }
@@ -29,5 +30,11 @@ public class FrontController {
         List<Enterprise> enterpriseList = this.enterpriseService.findAllEnterprises();
         model.addAttribute("enterprises", enterpriseList);
         return "enterprises";
+    }
+
+    @GetMapping("/enterprises/new")
+    public String newEnterprise(Model model){
+        model.addAttribute("enterprise", new Enterprise());
+        return "new-enterprise";
     }
 }
