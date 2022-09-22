@@ -3,6 +3,7 @@ package edu.udea.sigiga.controller;
 import edu.udea.sigiga.exception.ModelNotFoundException;
 import edu.udea.sigiga.model.Enterprise;
 import edu.udea.sigiga.service.EnterpriseService;
+import org.springframework.boot.Banner;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,10 +50,23 @@ public class EnterpriseController {
 
     //Controlador para borrar
     @GetMapping("enterprises/delete/{id}")
-    public RedirectView deleteEnterprise(@PathVariable("id") long id){
+    public RedirectView deleteEnterprise(@PathVariable("id") Long id){
         this.enterpriseService.deleteEnterprise(id);
         return new RedirectView("/enterprises");
     }
 
+    //Controlador para editar
+    @GetMapping("/enterprise/editar/{id}")
+    public String viewEnterpriseById(@PathVariable("id") Long id, Model model){
+        Enterprise enterprise = enterpriseService.findById(id);
+        model.addAttribute("enterprise", enterprise);
+        return "update-enterprise";
+    }
+
+    @PostMapping("/enterprises/update/{id}")
+    public String editEnterprise(@PathVariable("id") Long id, Enterprise enterprise){
+        enterpriseService.saveEnterprise(enterprise);
+        return "redirect:/enterprises";
+    }
 
 }

@@ -39,5 +39,8 @@ public class FrontController {
         return "new-enterprise";
     }
 
-
+    @GetMapping("/enterprises/edit/{id}")
+    public String updateEnterprise(){
+        return "update-enterprise";
+    }
 }
