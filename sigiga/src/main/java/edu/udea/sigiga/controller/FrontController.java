@@ -32,9 +32,12 @@ public class FrontController {
         return "enterprises";
     }
 
+    //Página Nueva Empresa
     @GetMapping("/enterprises/new")
     public String newEnterprise(Model model){
         model.addAttribute("enterprise", new Enterprise());
         return "new-enterprise";
     }
+
+
 }

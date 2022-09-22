@@ -23,8 +23,8 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${enterprise.name}"></h5>
                     <p class="card-text" th:text="'Document: ' + ${enterprise.document}"></p>
-                    <div>
-                        <a href="#" class="btn btn-primary">Update</a>
+                    <div class="d-flex flex-column gap-3">
+                        <a type="button" class="btn btn-primary" th:href="@{/enterprises/delete/{id} (id=${enterprise.id})}">Borrar</a>
                     </div>
                 </div>
             </div>

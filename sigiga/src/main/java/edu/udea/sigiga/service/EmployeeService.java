@@ -8,9 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements EmployeeInterface {
+public class EmployeeService{
 
+    //Variable que implementa el repositorio
     private EmployeeRepository employeeRepository;
+
+    //Hay que pasar un repositorio al servicio
+    public EmployeeService(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
 
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);

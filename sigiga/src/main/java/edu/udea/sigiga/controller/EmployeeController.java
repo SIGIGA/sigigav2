@@ -3,37 +3,27 @@ package edu.udea.sigiga.controller;
 import edu.udea.sigiga.exception.ModelNotFoundException;
 import edu.udea.sigiga.model.Employee;
 import edu.udea.sigiga.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
 public class EmployeeController {
 
-    //Creamos un Bean de la EmployeeService
-    @Autowired
-    private EmployeeService employeeService;
+    //Atributos
+    EmployeeService employeeService;
 
-    @PostMapping(value = "users")
-    public Employee saveEmployee(@RequestBody Employee employee){
-        employeeService.saveEmployee(employee);
-        return employee;
+    //Constructor
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    /*@GetMapping(value = "users")
-    public List<Employee> findAllEmployees(){
-        return employeeService.findAllEmployees();
-    }*/
-
-    @PutMapping(value = "users")
-    public  Employee updateEmployee(@RequestBody Employee employee){
-        return employeeService.updateEmployee(employee);
-    }
-
+    //Requests
     @GetMapping("users/{id}")
     public ResponseEntity<Employee> findById(@PathVariable("id") Long idEmployee){
         Employee employee = employeeService.findById(idEmployee);
@@ -42,6 +32,21 @@ public class EmployeeController {
         }
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
+
+    @PostMapping("/users")
+    public RedirectView saveEmployee(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD")
+                                         Employee employee, Model model){
+        model.addAttribute(employee);
+        this.employeeService.saveEmployee(employee);
+        return new RedirectView("/users");
+    }
+
+    @PutMapping(value = "users")
+    public  Employee updateEmployee(@RequestBody Employee employee){
+        return employeeService.updateEmployee(employee);
+    }
+
+
     @DeleteMapping(value = "users")
     public String deleteEmployeee(@RequestParam long id){
         employeeService.deleteEmployee(id);

@@ -39,4 +39,9 @@ public class EnterpriseService{
         Optional<Enterprise> enterpriseOptional = enterpriseRepository.findById(id);
         return enterpriseOptional.orElse(null);
     }
+
+    public Boolean deleteEnterprise(Long id){
+        this.enterpriseRepository.deleteById(id);
+        return true;
+    }
 }

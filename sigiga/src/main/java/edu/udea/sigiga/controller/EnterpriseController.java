@@ -27,26 +27,15 @@ public class EnterpriseController {
     //Request tipo POST
     @PostMapping("/enterprises")
     public RedirectView saveEnterprise(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD")
-                                           Enterprise enterprise, Model model){
+                                       Enterprise enterprise, Model model){
         model.addAttribute(enterprise);
         this.enterpriseService.saveEnterprise(enterprise);
         return new RedirectView("/enterprises");
     }
 
-   /* @GetMapping("/enterprises")
-    public List<Enterprise> findAllEnterprises(){
-        return enterpriseService.findAllEnterprises();
-    }
-*/
     @PutMapping(value = "enterprises")
     public  Enterprise updateEnterprise(@RequestBody Enterprise enterprise){
         return enterpriseService.updateEnterprise(enterprise);
-    }
-
-    @DeleteMapping(value = "enterprises")
-    public String deleteEnterprise(@RequestParam long id){
-        enterpriseService.deleteEnterprise(id);
-        return "Enterprise Deleted!";
     }
 
     @GetMapping("enterprises/{id}")
@@ -56,6 +45,13 @@ public class EnterpriseController {
             throw new ModelNotFoundException("Cliente no encontrado");
         }
         return new ResponseEntity<>(enterprise, HttpStatus.OK);
+    }
+
+    //Controlador para borrar
+    @GetMapping("enterprises/delete/{id}")
+    public RedirectView deleteEnterprise(@PathVariable("id") long id){
+        this.enterpriseService.deleteEnterprise(id);
+        return new RedirectView("/enterprises");
     }
 
 
