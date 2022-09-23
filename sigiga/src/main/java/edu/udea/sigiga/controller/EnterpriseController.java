@@ -55,18 +55,4 @@ public class EnterpriseController {
         return new RedirectView("/enterprises");
     }
 
-    //Controlador para editar
-    @GetMapping("/enterprise/editar/{id}")
-    public String viewEnterpriseById(@PathVariable("id") Long id, Model model){
-        Enterprise enterprise = enterpriseService.findById(id);
-        model.addAttribute("enterprise", enterprise);
-        return "update-enterprise";
-    }
-
-    @PostMapping("/enterprises/update/{id}")
-    public String editEnterprise(@PathVariable("id") Long id, Enterprise enterprise){
-        enterpriseService.saveEnterprise(enterprise);
-        return "redirect:/enterprises";
-    }
-
 }

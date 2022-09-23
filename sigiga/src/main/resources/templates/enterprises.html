@@ -16,7 +16,7 @@
             <img class="d-block mx-auto mb-4" src="/img/enterprise.png" alt="" width="72" height="57">
             <h3 class="display-4 fw-bold">SIGIGA</h3>
             <h5 class="display-7 fw-bold">Gestionando empresas</h5>
-            <a href="/enterprises/new" class="btn btn-secondary px-4 my-4">Nueva Empresa</a>
+            <a href="/enterprises/new" class="btn btn-success px-4 my-4">Nueva Empresa</a>
         </div>
         <div class="d-flex gap-4 justify-content-center">
             <div th:each="enterprise : ${enterprises}" class="card" style="width: 18rem;">
@@ -24,8 +24,8 @@
                     <h5 class="card-title" th:text="${enterprise.name}"></h5>
                     <p class="card-text" th:text="'Document: ' + ${enterprise.document}"></p>
                     <div class="d-flex flex-column gap-3">
-                        <a type="button" class="btn btn-primary" th:href="@{/enterprises/edit/{id} (id=${enterprise.id})}">Editar</a>
-                        <a type="button" class="btn btn-danger" th:href="@{/enterprises/delete/{id} (id=${enterprise.id})}">Borrar</a>
+                        <a th:href="@{/enterprises/edit/{id} (id=${enterprise.id})}" class="btn btn-info">Editar</a>
+                        <a th:href="@{/enterprises/delete/{id} (id=${enterprise.id})}" class="btn btn-danger">Borrar</a>
                     </div>
                 </div>
             </div>

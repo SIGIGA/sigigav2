@@ -5,6 +5,9 @@ import edu.udea.sigiga.service.EnterpriseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -39,8 +42,28 @@ public class FrontController {
         return "new-enterprise";
     }
 
+    //Controlador para editar (Mostrar formulario para editar)
     @GetMapping("/enterprises/edit/{id}")
-    public String updateEnterprise(){
-        return "update-enterprise";
+    public String editEnterprise(@PathVariable Long id, Model model){
+        model.addAttribute("enterprise", enterpriseService.findById(id));
+        return "edit-enterprise";
     }
+
+    //Controlador para actualizar después de modificar
+    @PostMapping("/enterprises/{id}")
+    public String updateEnterprise(@PathVariable Long id, @ModelAttribute("enterprise")
+    Enterprise enterprise, Model model){
+        Enterprise enterpriseExistente = enterpriseService.findById(id);
+        enterpriseExistente.setId(id);
+        enterpriseExistente.setName(enterprise.getName());
+        enterpriseExistente.setDocument(enterprise.getDocument());
+        enterpriseExistente.setPhone(enterprise.getPhone());
+        enterpriseExistente.setAddress(enterprise.getAddress());
+        enterpriseExistente.setCreateAt(enterprise.getCreateAt());
+
+        enterpriseService.updateEnterprise(enterpriseExistente);
+
+        return "redirect:/enterprises";
+    }
+
 }

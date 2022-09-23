@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <title>Editar Empresa</title>
+</head>
+<body>
+<div class="px-2 py-2 my-2  text-center">
+        <img class="d-block mx-auto mb-4" src="/img/enterprise.png" alt="" width="72" height="57">
+        <h4 class="display-6 fw-bold">SIGIGA</h4>
+        <h6 class="display-7 fw-bold">Editando Empresa</h6>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="card-body">
+            <form th:action="@{/enterprises/{id}(id = ${enterprise.id})}" th:object="${enterprise}" method="post">
+
+                <div class="form-group">
+                    <label>Name: </label>
+                    <input type="text" name="name" th:field="*{name}" class="form-control"
+                           placeholder="Nombre de la empresa" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Document: </label>
+                    <input type="text" name="document" th:field="*{document}" class="form-control"
+                           placeholder="Documento de la empresa" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone: </label>
+                    <input type="text" name="phone" th:field="*{phone}" class="form-control"
+                           placeholder="Teléfono de la empresa" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Address: </label>
+                    <input type="text" name="address" th:field="*{address}" class="form-control"
+                           placeholder="Dirección de la empresa" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Create At: </label>
+                    <input type="text" name="createAt" th:field="*{createAt}" class="form-control"
+                           placeholder="Creación de la empresa" required/>
+                </div>
+                <br>
+                <div class="box-footer text-center">
+                    <button class="btn btn-success">Actualizar Empresa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+</html>
