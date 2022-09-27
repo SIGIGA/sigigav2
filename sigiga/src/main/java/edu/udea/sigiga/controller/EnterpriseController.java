@@ -3,7 +3,6 @@ package edu.udea.sigiga.controller;
 import edu.udea.sigiga.exception.ModelNotFoundException;
 import edu.udea.sigiga.model.Enterprise;
 import edu.udea.sigiga.service.EnterpriseService;
-import org.springframework.boot.Banner;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.persistence.Id;
-import java.util.List;
 
 @RestController
 public class EnterpriseController {

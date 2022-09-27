@@ -6,13 +6,14 @@ import edu.udea.sigiga.service.EmployeeService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class EmployeeController {
 
     //Atributos
@@ -22,6 +23,27 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
+    //Página mostrar Empleados
+    @GetMapping("/employees")
+    public String employees(Model model){
+        List<Employee> employeeList = this.employeeService.findAllEmployees();
+        model.addAttribute("employees", employeeList);
+        return "employees";
+    }
+
+    //Página Nuevo Empleado
+    @GetMapping("/employees/new")
+    public String newEmployee(Model model){
+        model.addAttribute("employee", new Employee());
+        return "new-employee";
+    }
+
+
+
+
+
+
 
     //Requests
     @GetMapping("users/{id}")

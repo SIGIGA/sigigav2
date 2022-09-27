@@ -13,7 +13,7 @@ public class EnterpriseService{
     //Variable que implementa el repositorio
     private EnterpriseRepository enterpriseRepository;
 
-    //Hay que pasar un repositorio al servicio
+    //Pasando repositorio al servicio
     public EnterpriseService(EnterpriseRepository enterpriseRepository){
         this.enterpriseRepository = enterpriseRepository;
     }

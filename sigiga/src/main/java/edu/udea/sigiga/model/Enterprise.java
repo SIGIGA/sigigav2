@@ -12,7 +12,7 @@ public class Enterprise {
 
     //Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 
     @Column(name = "name", nullable = false, length = 70, unique = true)

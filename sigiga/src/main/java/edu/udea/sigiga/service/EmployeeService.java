@@ -39,4 +39,9 @@ public class EmployeeService{
         return employeeOptional.orElse(null);
     }
 
+    public Boolean deleteEmployee(Long id){
+        this.employeeRepository.deleteById(id);
+        return true;
+    }
+
 }
